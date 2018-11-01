@@ -1,5 +1,5 @@
 var group;
-
+var tes = true;
 class fase1 extends Phaser.Scene{
 
 constructor(){
@@ -90,10 +90,13 @@ create (){
     this.cameras.main.setBounds(0, 0, 1400, 288);
     this.cameras.main.startFollow(this.player);
 
-    group = this.physics.add.staticGroup();
+    group = this.physics.add.staticGroup(); 
     group.create(896.5149120000165, 15, 'coin');
     group.create(540.7958079999963, 25, 'coin');
-    this.physics.add.overlap(this.player, group, collectStar);
+    group.create(995.6822400000013, 160, 'coin');
+    group.create(1240.7678079999814, 100, 'coin');
+    
+    console.log(this.physics.add.overlap(this.player, group, collectStar,null,this));
     }
 
 update(){
@@ -115,16 +118,19 @@ update(){
 
         this.player.anims.play('turn');
     }
-    if (this.cursors.up.isDown && this.player.body.touching.down){
+    if (this.cursors.up.isDown && this.player.body.touching.down && tes){
         this.player.setVelocityY(-/*300*/254);
         console.log(this.player.x)
     }
 }
 }
 
-function collectStar (player, grupo)
-{
+function collectStar (player, grupo){
+    tes = false;
     grupo.destroy();
+    var teste = setTimeout(function(){
+        tes = true;
+    },500);
 }
 
 export default fase1;
