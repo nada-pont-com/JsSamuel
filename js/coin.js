@@ -14,8 +14,8 @@ class Coin{
     }
     update(player){
         this.txtPonto.setText("Pontos: "+pontos);
-        if(player.x>350 && player.x<1050){
-            this.txtPonto.x=player.x-334;
+        if(player.x>350 && player.x<2450){
+            this.txtPonto.x=parseInt(player.x-334);
         }
         // console.log(this.txtPonto.x+"\n"+player.x)
     }

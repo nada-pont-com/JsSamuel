@@ -5,7 +5,7 @@ class Player{
         this.player;
         this.cursors = scene.input.keyboard.createCursorKeys();
         console.log(scene.platforms);
-        this.platforms = scene.platforms;
+        this.platforms = scene.platforms.platforms;
     }
     create(){
         console.log("teste");

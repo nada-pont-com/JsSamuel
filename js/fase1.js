@@ -1,5 +1,6 @@
 import Player from './player.js';
 import Coin from './coin.js';
+import PlatForms from "./platForms.js";
 class fase1 extends Phaser.Scene{
     
     constructor(){
@@ -42,19 +43,21 @@ class fase1 extends Phaser.Scene{
         //this.h = this.cameras.main.height;
         
         this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
-        
-        this.platforms = this.physics.add.staticGroup();
-        this.platforms.create(180, 278, 'ground');
-        this.platforms.create(540, 278, 'ground');
-        this.platforms.create(900, 278, 'ground');
-        this.platforms.create(1260, 278, 'ground');
-        this.platforms.create(574, 155, 'plat1');
-        this.platforms.create(344, 258, 'plat2');
-        this.platforms.create(1268, 155, 'plat3');
-        this.platforms.create(1000, 197, 'OBS7');
-        this.platforms.create(-1, 144 , 'limite');
-        this.platforms.create(1401, 144, 'limite');
-        console.log(this.platforms);
+        this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
+
+        this.platforms = new PlatForms(this);
+        this.platforms.create();
+        let x;
+        for (let i = 0; i < 2; i++) {
+            x  = 1400*i;
+            this.platforms.criaObstaculos(574+x, 155, 'plat1');
+            this.platforms.criaObstaculos(344+x, 258, 'plat2');
+            this.platforms.criaObstaculos(1268+x, 155, 'plat3');
+            this.platforms.criaObstaculos(1000+x, 197, 'OBS7');
+        }
+        this.platforms.criaObstaculos(-1, 144 , 'limite');
+        this.platforms.criaObstaculos(2801, 144, 'limite');
+
         this.player = new Player(this);
         this.player.create();
         this.coin = new Coin(this);
@@ -64,7 +67,7 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
 
-        this.cameras.main.setBounds(0, 0, 1400, 288);
+        this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
     }
