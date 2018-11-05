@@ -12,7 +12,7 @@ class MenuFases extends Phaser.Scene {
         this.load.image("f4", "../assets/buttons/f4.png");
         this.load.image("f5", "../assets/buttons/f5.png");
         this.load.image("f6", "../assets/buttons/f6.png");
-        this.load.image("bg", "../assets/background/menufases.png");
+        // this.load.image("bg", "../assets/background/menufases.png");
     }
     create(){
         var bg = this.add.image(350, 144, "bg");

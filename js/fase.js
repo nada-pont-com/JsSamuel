@@ -130,8 +130,7 @@ class fase1 extends Phaser.Scene{
         }
     }
     
-    collectStar (player, star)
-    {
+    collectStar (player, star){
         star.disableBody(true, true);
     
         //  Add and update the score
