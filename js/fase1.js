@@ -51,9 +51,9 @@ class fase1 extends Phaser.Scene{
         for (let i = 0; i < 2; i++) {
             x  = 1400*i;
             this.platforms.criaObstaculos(574+x, 155, 'plat1');
-            this.platforms.criaObstaculos(344+x, 258, 'plat2');
+            this.platforms.criaObstaculos(344+x, 250, 'plat2');
             this.platforms.criaObstaculos(1268+x, 155, 'plat3');
-            this.platforms.criaObstaculos(1000+x, 197, 'OBS7');
+            this.platforms.criaObstaculos(1000+x, 196, 'OBS7');
         }
         this.platforms.criaObstaculos(-1, 144 , 'limite');
         this.platforms.criaObstaculos(2801, 144, 'limite');
