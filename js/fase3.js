@@ -1,10 +1,10 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
-class fase1 extends Phaser.Scene{
+class fase3 extends Phaser.Scene{
     
     constructor(){
-        super({key: "fase1"});
+        super({key: "fase3"});
         this.player;
         this.bat;
         this.coin;
@@ -25,7 +25,7 @@ class fase1 extends Phaser.Scene{
         
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 1.png');//700x288
+        this.load.image('bg', 'assets/background/fase 3.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -81,4 +81,4 @@ class fase1 extends Phaser.Scene{
     }
 }
 
-export default fase1;
+export default fase3;
