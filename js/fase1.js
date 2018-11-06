@@ -1,6 +1,7 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
+import Tempo from "./tempo.js";
 class fase1 extends Phaser.Scene{
     
     constructor(){
@@ -18,6 +19,7 @@ class fase1 extends Phaser.Scene{
         this.w;
         this.h;
         this.pontos = 0;
+        this.tempo;
     }
     init(){
         
@@ -44,20 +46,17 @@ class fase1 extends Phaser.Scene{
         
         this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
-
+        
         this.platforms = new PlatForms(this);
-        this.platforms.create();
-        let x;
-        for (let i = 0; i < 2; i++) {
-            x  = 1400*i;
-            this.platforms.criaObstaculos(574+x, 155, 'plat1');
-            this.platforms.criaObstaculos(344+x, 258, 'plat2');
-            this.platforms.criaObstaculos(1268+x, 155, 'plat3');
-            this.platforms.criaObstaculos(1000+x, 197, 'OBS7');
-        }
-        this.platforms.criaObstaculos(-1, 144 , 'limite');
-        this.platforms.criaObstaculos(2801, 144, 'limite');
-
+        this.platforms.create('ground');
+        this.platforms.criaObstaculos(574, 155, 'plat1',2);
+        this.platforms.criaObstaculos(344, 258, 'plat2',2);
+        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
+        this.platforms.criaObstaculos(1000, 197, 'OBS7',2);
+        this.platforms.criaObstaculos(-1, 144 , 'limite',1);
+        this.platforms.criaObstaculos(2801, 144, 'limite',1);
+        this.tempo = new Tempo(this);
+        this.tempo.geraTempo();
         this.player = new Player(this);
         this.player.create();
         this.coin = new Coin(this);
@@ -66,6 +65,7 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
+<<<<<<< HEAD
         this.coin.geraMoedas(1940.5149120000165,15);
         this.coin.geraMoedas(2296.7958079999963,25);
         this.coin.geraMoedas(2395.6822400000013,160);
@@ -87,6 +87,9 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
 
+=======
+        
+>>>>>>> 95d551131a905d4d5b302321e6cf9e96d421e3de
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
@@ -95,6 +98,9 @@ class fase1 extends Phaser.Scene{
     update(){
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
+        if(this.tempo){
+            
+        }
         if (this.gameOver){
             return;
         }
