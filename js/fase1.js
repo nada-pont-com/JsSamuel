@@ -66,6 +66,26 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(1940.5149120000165,15);
+        this.coin.geraMoedas(2296.7958079999963,25);
+        this.coin.geraMoedas(2395.6822400000013,160);
+        this.coin.geraMoedas(2751.6822400000013,160); /* coins padrão */ 
+        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(896.5149120000165,15);
+        this.coin.geraMoedas(540.7958079999963,25);
+        this.coin.geraMoedas(995.6822400000013,160);
+        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(896.5149120000165,15);
+        this.coin.geraMoedas(540.7958079999963,25);
+        this.coin.geraMoedas(995.6822400000013,160);
+        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(896.5149120000165,15);
+        this.coin.geraMoedas(540.7958079999963,25);
+        this.coin.geraMoedas(995.6822400000013,160);
+        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(540.7958079999963,25);
+        this.coin.geraMoedas(995.6822400000013,160);
+        this.coin.geraMoedas(1240.7678079999814,100);
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
