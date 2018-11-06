@@ -57,6 +57,7 @@ class Player{
         }
         if (this.cursors.up.isDown && this.player.body.touching.down && coin){
             this.player.setVelocityY(-/*300*/254);
+            console.log(this.player.x);
         }
     }
 }
