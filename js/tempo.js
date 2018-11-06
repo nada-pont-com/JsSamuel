@@ -8,7 +8,7 @@ class Tempo{
         this.add = scene.add;
     }
     geraTempo(){
-
+        this.add.text(666,16,"",{fill:"#000",fontFamily:"Arial",fontSize:"30px"})
         tempo = setInterval(function(){
             if(this.seg == 59){
                 this.seg = 0;
