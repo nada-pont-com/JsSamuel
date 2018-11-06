@@ -48,7 +48,6 @@ class fase1 extends Phaser.Scene{
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
         
         this.platforms = new PlatForms(this);
-        this.platforms.create();
         this.platforms.create('ground');
         this.platforms.criaObstaculos(574, 155, 'plat1',2);
         this.platforms.criaObstaculos(344, 258, 'plat2',2);
@@ -66,30 +65,26 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
+
         this.coin.geraMoedas(1940.5149120000165,15);
         this.coin.geraMoedas(2296.7958079999963,25);
         this.coin.geraMoedas(2395.6822400000013,160);
-        this.coin.geraMoedas(2751.6822400000013,160); /* coins padrão */ 
-        this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(896.5149120000165,15);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(896.5149120000165,15);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(896.5149120000165,15);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(2751.6822400000013,160); 
+        this.coin.geraMoedas(2640.7678079999814,100); 
+        this.coin.geraMoedas(1234.5149120000165,15);
+        this.coin.geraMoedas(2800,25);
+        this.coin.geraMoedas(999.6822400000013,180);
+        this.coin.geraMoedas(1240.7678079999814,10);/* coins padrão */
+        this.coin.geraMoedas(444.5149120000165,190);
+        this.coin.geraMoedas(777.7958079999963,25);
+        this.coin.geraMoedas(369.6822400000013,160);
+        this.coin.geraMoedas(246.7678079999814,100);
+        this.coin.geraMoedas(846.5149120000165,15);
+        this.coin.geraMoedas(1432.7958079999963,25);
+        this.coin.geraMoedas(2432.6822400000013,160);
+        this.coin.geraMoedas(2000.7678079999814,100);
+        this.coin.geraMoedas(2200.7958079999963,25);
 
-=======
-        
->>>>>>> 95d551131a905d4d5b302321e6cf9e96d421e3de
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
