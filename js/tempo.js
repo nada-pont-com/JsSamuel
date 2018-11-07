@@ -8,7 +8,7 @@ class Tempo{
         this.add = scene.add;
     }
     geraTempo(){
-        this.add.text(666,16,"",{fill:"#000",fontFamily:"Arial",fontSize:"30px"})
+        this.txtTempo = this.add.text(666,16,"",{fill:"#000",fontFamily:"Arial",fontSize:"30px"})
         tempo = setInterval(function(){
             if(this.seg == 59){
                 this.seg = 0;
@@ -22,6 +22,12 @@ class Tempo{
     }
     paraTempo(){
         clearInterval(tempo);
+    }
+    moveTempo(player){
+        this.txtTempo.setText("Pontos: "+pontos);
+        if(player.x>350 && player.x<2450){
+            this.txtTempo.x=parseInt(player.x+334);
+        }
     }
     update(){
         return gameOver;
