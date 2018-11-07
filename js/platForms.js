@@ -11,8 +11,11 @@ class PlatForms{
             x+=360;
         }
     }
-    criaObstaculos(x,y,nome){//coordenadas o o nome;
-        this.platforms.create(x, y, nome);
+    criaObstaculos(x,y,nome,number){//coordenadas o o nome;
+        for(let i = 0;i<number;i++){
+            let x2 = 1400*i;
+            this.platforms.create(x+x2, y, nome);
+        }
     }
 }
 export default PlatForms;
