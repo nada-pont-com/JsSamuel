@@ -53,10 +53,12 @@ class fase1 extends Phaser.Scene{
         this.platforms.criaObstaculos(344, 250, 'plat2',2);
         this.platforms.criaObstaculos(1268, 155, 'plat3',2);
         this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
+        this.platforms.criaObstaculos(916, 120, 'OBS8',2);
+        /* 327 120 */
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
-        this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
+        
+        console.log(this.tempo);
 
         this.player = new Player(this);
         this.player.create();
@@ -84,19 +86,23 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(2432.6822400000013,160);
         this.coin.geraMoedas(2000.7678079999814,100);
         this.coin.geraMoedas(2200.7958079999963,25);
-
-
+        this.coin.criaTexto();
+        this.tempo = new Tempo(this);
+        this.tempo.geraTempo();
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
     }
     
     update(){
-        this.coin.update(this.player.player);
-        this.player.update(this.coin.coins());
         if (this.gameOver){
             return;
         }
+        this.gameOver = this.tempo.update();
+        this.tempo.moveTempo(this.player.player);
+        this.coin.update(this.player.player);
+        this.player.update(this.coin.coins());
+        
     }
 }
 
