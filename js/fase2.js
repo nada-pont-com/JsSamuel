@@ -62,10 +62,14 @@ class fase2 extends Phaser.Scene{
         this.player.create();
         this.coin = new Coin(this);
         this.coin.create();
-        this.coin.geraMoedas(896.5149120000165,15);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
+        this.coin.geraMoedas(896.5149120000165,200);
+        this.coin.geraMoedas(540.7958079999963,200);
+        this.coin.geraMoedas(995.6822400000013,200);
+        this.coin.geraMoedas(200,215);
+        this.coin.geraMoedas(230,215);
+        this.coin.geraMoedas(200,250);
+        this.coin.geraMoedas(230,250);
+        this.coin.geraMoedas(1240.7678079999814,200);
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
