@@ -10,6 +10,8 @@ class Coin{
     }
     create(){
         this.coin = this.physics.add.staticGroup();         
+    }
+    criaTexto(){
         this.txtPonto = this.txt.text(16,16,"Pontos: "+pontos,{fill:"#000", fontFamily:"Arial", fontSize:"20px"});
     }
     update(player){
