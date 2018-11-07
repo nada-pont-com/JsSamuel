@@ -35,7 +35,6 @@ class fase1 extends Phaser.Scene{
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
         this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
-        this.load.image('OBS8','assets/obj/OBS8.png');//andaime
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
 
@@ -54,8 +53,6 @@ class fase1 extends Phaser.Scene{
         this.platforms.criaObstaculos(344, 250, 'plat2',2);
         this.platforms.criaObstaculos(1268, 155, 'plat3',2);
         this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
-        this.platforms.criaObstaculos(916, 120, 'OBS8',2);
-        /* 327 120 */
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
         
