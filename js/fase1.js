@@ -3,7 +3,7 @@ import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
 class fase1 extends Phaser.Scene{
-    
+
     constructor(){
         super({key: "fase1"});
         this.player;
@@ -21,9 +21,9 @@ class fase1 extends Phaser.Scene{
         this.pontos = 0;
     }
     init(){
-        
+
         this.roundPixels = true;
-        
+
     }
     preload (){
         this.load.image('bg', 'assets/background/fase 1.png');//700x288
@@ -38,11 +38,12 @@ class fase1 extends Phaser.Scene{
         this.load.image('OBS8','assets/obj/OBS8.png');//andaime
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
-    
+
     create (){
+        
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
-        
+
         this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
 
@@ -69,8 +70,8 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(1940.5149120000165,15);
         this.coin.geraMoedas(2296.7958079999963,25);
         this.coin.geraMoedas(2395.6822400000013,160);
-        this.coin.geraMoedas(2751.6822400000013,160); 
-        this.coin.geraMoedas(2640.7678079999814,100); 
+        this.coin.geraMoedas(2751.6822400000013,160);
+        this.coin.geraMoedas(2640.7678079999814,100);
         this.coin.geraMoedas(1234.5149120000165,15);
         this.coin.geraMoedas(2800,25);
         this.coin.geraMoedas(999.6822400000013,180);
@@ -90,7 +91,7 @@ class fase1 extends Phaser.Scene{
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
     }
-    
+
     update(){
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
