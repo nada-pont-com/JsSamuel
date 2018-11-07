@@ -4,13 +4,13 @@ class Coin{
     constructor(scene){
         this.physics = scene.physics;
         this.coin;
-        this.add = scene.add;
+        this.txt = scene.add;
         this.txtPonto;
         pontos = scene.pontos;
     }
     create(){
         this.coin = this.physics.add.staticGroup();         
-        this.txtPonto = this.add.text(16,16,"Pontos: "+pontos,{fill:"#000", fontFamily:"Arial", fontSize:"20px"});
+        this.txtPonto = this.txt.text(16,16,"Pontos: "+pontos,{fill:"#000", fontFamily:"Arial", fontSize:"20px"});
     }
     update(player){
         this.txtPonto.setText("Pontos: "+pontos);

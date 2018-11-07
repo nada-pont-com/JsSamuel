@@ -1,10 +1,10 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
-class fase1 extends Phaser.Scene{
+class fase3 extends Phaser.Scene{
     
     constructor(){
-        super({key: "fase1"});
+        super({key: "fase3"});
         this.player;
         this.bat;
         this.coin;
@@ -25,7 +25,7 @@ class fase1 extends Phaser.Scene{
         
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 1.png');//700x288
+        this.load.image('bg', 'assets/background/fase 3.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -46,16 +46,17 @@ class fase1 extends Phaser.Scene{
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
-
-        this.platforms.create('ground');
-        this.platforms.criaObstaculos(574, 155, 'plat1',2);
-        this.platforms.criaObstaculos(344, 250, 'plat2',2);
-        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
-        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
-        this.platforms.criaObstaculos(-1, 144 , 'limite',1);
-        this.platforms.criaObstaculos(2801, 144, 'limite',1);
-        this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
+        this.platforms.create();
+        let x;
+        for (let i = 0; i < 2; i++) {
+            x  = 1400*i;
+            this.platforms.criaObstaculos(574+x, 155, 'plat1');
+            this.platforms.criaObstaculos(344+x, 250, 'plat2');
+            this.platforms.criaObstaculos(1268+x, 155, 'plat3');
+            this.platforms.criaObstaculos(1000+x, 196, 'OBS7');
+        }
+        this.platforms.criaObstaculos(-1, 144 , 'limite');
+        this.platforms.criaObstaculos(2801, 144, 'limite');
 
         this.player = new Player(this);
         this.player.create();
@@ -65,25 +66,6 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(1940.5149120000165,15);
-        this.coin.geraMoedas(2296.7958079999963,25);
-        this.coin.geraMoedas(2395.6822400000013,160);
-        this.coin.geraMoedas(2751.6822400000013,160); 
-        this.coin.geraMoedas(2640.7678079999814,100); 
-        this.coin.geraMoedas(1234.5149120000165,15);
-        this.coin.geraMoedas(2800,25);
-        this.coin.geraMoedas(999.6822400000013,180);
-        this.coin.geraMoedas(1240.7678079999814,10);/* coins padrão */
-        this.coin.geraMoedas(444.5149120000165,190);
-        this.coin.geraMoedas(777.7958079999963,25);
-        this.coin.geraMoedas(369.6822400000013,160);
-        this.coin.geraMoedas(246.7678079999814,100);
-        this.coin.geraMoedas(846.5149120000165,15);
-        this.coin.geraMoedas(1432.7958079999963,25);
-        this.coin.geraMoedas(2432.6822400000013,160);
-        this.coin.geraMoedas(2000.7678079999814,100);
-        this.coin.geraMoedas(2200.7958079999963,25);
-
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
@@ -99,4 +81,4 @@ class fase1 extends Phaser.Scene{
     }
 }
 
-export default fase1;
+export default fase3;
