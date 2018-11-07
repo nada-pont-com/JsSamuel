@@ -58,7 +58,7 @@ class fase1 extends Phaser.Scene{
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
         
-        console.log(this.tempo);
+        // console.log(this.tempo);
 
         this.player = new Player(this);
         this.player.create();
@@ -75,20 +75,25 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(2640.7678079999814,100); 
         this.coin.geraMoedas(1234.5149120000165,15);
         this.coin.geraMoedas(2800,25);
-        this.coin.geraMoedas(999.6822400000013,180);
-        this.coin.geraMoedas(1240.7678079999814,10);/* coins padrão */
+        this.coin.geraMoedas(193,180);
+        this.coin.geraMoedas(322,10);
         this.coin.geraMoedas(444.5149120000165,190);
         this.coin.geraMoedas(777.7958079999963,25);
         this.coin.geraMoedas(369.6822400000013,160);
         this.coin.geraMoedas(246.7678079999814,100);
-        this.coin.geraMoedas(846.5149120000165,15);
+        this.coin.geraMoedas(1689,250);
         this.coin.geraMoedas(1432.7958079999963,25);
-        this.coin.geraMoedas(2432.6822400000013,160);
+        this.coin.geraMoedas(640,160);
         this.coin.geraMoedas(2000.7678079999814,100);
         this.coin.geraMoedas(2200.7958079999963,25);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.tempo.geraTempo();
+        this.input.on("pointerdown",function(pointer){
+            console.log("x: "+this.player.player.x);
+            console.log("y: "+this.player.player.y);
+        },this);
+
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
