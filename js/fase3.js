@@ -6,18 +6,8 @@ class fase3 extends Phaser.Scene{
 
     constructor(){
         super({key: "fase3"});
-        this.player;
-        this.bat;
-        this.coin;
-        this.bg;
-        this.platforms;
-        this.obs;
-        this.cursors;
         this.score = 0;
         this.gameOver = false;
-        this.scoreText;
-        this.w;
-        this.h;
         this.pontos = 0;
     }
     init(){

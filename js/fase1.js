@@ -6,24 +6,12 @@ class fase1 extends Phaser.Scene{
 
     constructor(){
         super({key: "fase1"});
-        this.player;
-        this.bat;
-        this.coin;
-        this.bg;
-        this.platforms;
-        this.obs;
-        this.cursors;
         this.score = 0;
         this.gameOver = false;
-        this.scoreText;
-        this.w;
-        this.h;
         this.pontos = 0;
     }
     init(){
-
         this.roundPixels = true;
-
     }
     preload (){
         this.load.image('bg', 'assets/background/fase 1.png');//700x288

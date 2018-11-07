@@ -4,7 +4,6 @@ class Player{
         this.anims = scene.anims;
         this.player;
         this.cursors = scene.input.keyboard.createCursorKeys();
-        console.log(scene.platforms);
         this.platforms = scene.platforms.platforms;
     }
     create(){
