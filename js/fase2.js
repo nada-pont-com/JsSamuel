@@ -1,22 +1,23 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
-class fase2 extends Phaser.Scene{
-
-    constructor(){
-        super({key: "fase2"});
-        this.player;
-        this.bat;
-        this.coin;
-        this.bg;
-        this.platforms;
         this.obs;
         this.cursors;
         this.score = 0;
         this.gameOver = false;
         this.scoreText;
+        this.coin;
+        this.player;
         this.w;
         this.h;
+import Tempo from "./tempo.js";
+class fase2 extends Phaser.Scene{
+
+    constructor(){
+        super({key: "fase2"});
+        this.bat;
+        this.bg;
+        this.platforms;
         this.pontos = 0;
     }
     init(){
@@ -42,13 +43,13 @@ class fase2 extends Phaser.Scene{
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
 
+        let x;
+        for (let i = 0; i < 2; i++) {
         this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
         this.platforms.create();
-        let x;
-        for (let i = 0; i < 2; i++) {
             x  = 1400*i;
             this.platforms.criaObstaculos(574+x, 155, 'plat1');
             this.platforms.criaObstaculos(344+x, 250, 'plat2');
@@ -75,6 +76,13 @@ class fase2 extends Phaser.Scene{
         this.coin.geraMoedas(995.6822400000013,160);
         this.coin.geraMoedas(1240.7678079999814,100);
         this.coin.geraMoedas(342.3957205812645,38);
+        this.coin.criaTexto();
+        this.tempo = new Tempo(this);
+        this.tempo.geraTempo();
+        this.input.on("pointerdown", function(pointer){
+          console.log("x: "+this.player.player.x);
+          console.log("y: "+this.player.player.y);
+        },this);
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
@@ -82,7 +90,7 @@ class fase2 extends Phaser.Scene{
     }
 
     update(){
-        this.coin.update(this.player.player);
+        this.coin.update(this.player.player[]
         this.player.update(this.coin.coins());
         if (this.gameOver){
             return;
