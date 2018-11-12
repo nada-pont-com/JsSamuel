@@ -66,20 +66,6 @@ class fase2 extends Phaser.Scene{
         //primeira
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
-<<<<<<< HEAD
-        this.coin.geraMoedas(1240.7678079999814,200);
-        this.coin.geraMoedas(896.5149120000165,15);
-        this.coin.geraMoedas(540.7958079999963,25);
-        this.coin.geraMoedas(995.6822400000013,160);
-        this.coin.geraMoedas(1240.7678079999814,100);
-        this.coin.geraMoedas(342.3957205812645,38);
-        this.coin.criaTexto();
-        this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
-        this.input.on("pointerdown", function(pointer){
-          console.log("x: "+this.player.player.x);
-          console.log("y: "+this.player.player.y);
-=======
         //segunda
         this.coin.geraMoedas(300,250);
         this.coin.geraMoedas(330,250);
@@ -163,7 +149,6 @@ class fase2 extends Phaser.Scene{
         this.input.on("pointerdown",function(pointer){
             console.log("x: "+this.player.player.x);
             console.log("y: "+this.player.player.y);
->>>>>>> 2bc8a9a6a1bd2671b077528dab7b8dc8ee971222
         },this);
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
@@ -172,7 +157,7 @@ class fase2 extends Phaser.Scene{
     }
 
     update(){
-        this.coin.update(this.player.player[]
+        this.coin.update(this.player.player[]);
         this.player.update(this.coin.coins());
         if (this.gameOver){
             return;
