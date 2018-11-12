@@ -15,7 +15,7 @@ class fase1 extends Phaser.Scene{
         this.roundPixels = true;
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 1.png');//700x288
+        this.load.image('bgf1', 'assets/background/fase 1.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -33,8 +33,8 @@ class fase1 extends Phaser.Scene{
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
 
-        this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
-        this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
+        this.bg = this.add.image(0, 0, 'bgf1').setOrigin(0,0);
+        this.bg2 = this.add.image(1400, 0, 'bgf1').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
         this.platforms.create('ground');
@@ -73,29 +73,28 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(2200.7958079999963,25);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.input.on("pointerdown",function(pointer){
-            console.log("x: "+this.player.player.x);
-            console.log("y: "+this.player.player.y);
-        },this);
         this.morcego = new Morcego(this);
-        this.morcego.createMorcego(200,45);
-        this.morcego.createMorcego(300,45);
-        this.morcego.createMorcego(400,45);
+        this.morcego.createMorcego(200,205);
+        this.morcego.createMorcego(300,205);
+        this.morcego.createMorcego(400,205);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
-        console.log(this);
+        this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
     }
 
     update(){
         if (this.gameOver){
+            this.tempo.paraTempo();
+            this.scene.restart();
+            this.gameOver = false;
             return;
         }
-        this.gameOver = this.tempo.update();
+        this.gameOver = this.tempo.update(this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
-        this.morcego.update(this.morcego.mocego);
+        this.gameOver = this.morcego.update(this.morcego.mocego,this.gameOver);
     }
 }
 

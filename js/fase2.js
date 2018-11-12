@@ -2,6 +2,15 @@ import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
+        
+class fase2 extends Phaser.Scene{
+
+    constructor(){
+        super({key: "fase2"});
+        this.bat;
+        this.bg;
+        this.platforms;
+        this.pontos = 0;
         this.obs;
         this.cursors;
         this.score = 0;
@@ -11,15 +20,6 @@ import PlatForms from "./platForms.js";
         this.player;
         this.w;
         this.h;
-import Tempo from "./tempo.js";
-class fase2 extends Phaser.Scene{
-
-    constructor(){
-        super({key: "fase2"});
-        this.bat;
-        this.bg;
-        this.platforms;
-        this.pontos = 0;
     }
     init(){
 
@@ -27,7 +27,7 @@ class fase2 extends Phaser.Scene{
 
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 2.png');//700x288
+        this.load.image('bgf2', 'assets/background/fase 2.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -45,8 +45,8 @@ class fase2 extends Phaser.Scene{
 
         let x;
         for (let i = 0; i < 2; i++) {
-        this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
-        this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
+        this.bg = this.add.image(0, 0, 'bgf2').setOrigin(0,0);
+        this.bg2 = this.add.image(1400, 0, 'bgf2').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
         this.platforms.create();
@@ -60,9 +60,7 @@ class fase2 extends Phaser.Scene{
         this.platforms.criaObstaculos(2801, 144, 'limite');
 
         this.player = new Player(this);
-        this.player.create();
         this.coin = new Coin(this);
-        this.coin.create();
         //primeira
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
@@ -157,7 +155,7 @@ class fase2 extends Phaser.Scene{
     }
 
     update(){
-        this.coin.update(this.player.player[]);
+        this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
         if (this.gameOver){
             return;

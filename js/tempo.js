@@ -5,6 +5,8 @@ let min = 0;
 class Tempo{
     constructor(scene){
         gameOver = false;
+        seg = 0;
+        min = 0;
         this.add = scene.add;
         this.geraTempo();
     }
@@ -37,8 +39,12 @@ class Tempo{
             this.txtTempo.x=parseInt(player.x+150);
         }
     }
-    update(){
-        return gameOver;
+    update(gameOver2){
+        if(gameOver2){
+            return gameOver2;
+        }else{
+            return gameOver;
+        }
     }
 }
 export default Tempo;
