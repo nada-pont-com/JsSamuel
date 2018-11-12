@@ -45,7 +45,7 @@ class fase1 extends Phaser.Scene{
         this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
-        this.platforms.criaObstaculos(300, 160, 'tlaloc',1);        
+        // this.platforms.criaObstaculos(300, 160, 'tlaloc',1);        
         // console.log(this.tempo);
 
         this.player = new Player(this);

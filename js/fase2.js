@@ -1,7 +1,7 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
-import PlatForms from "./platForms.js";<<<<<<< HEAD
+import PlatForms from "./platForms.js";
         
 class fase2 extends Phaser.Scene{
 

@@ -14,7 +14,7 @@ class fase3 extends Phaser.Scene{
         this.roundPixels = true;
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 3.png');//700x288
+        this.load.image('bgf3', 'assets/background/fase 3.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -31,8 +31,8 @@ class fase3 extends Phaser.Scene{
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
 
-        this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
-        this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
+        this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);
+        this.bg2 = this.add.image(1400, 0, 'bgf3').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
 
