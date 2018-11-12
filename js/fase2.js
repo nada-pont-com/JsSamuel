@@ -2,8 +2,12 @@ import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
+<<<<<<< HEAD
 
 
+=======
+        
+// import Tempo from "./tempo.js";
 class fase2 extends Phaser.Scene{
 
     constructor(){
@@ -44,21 +48,15 @@ class fase2 extends Phaser.Scene{
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
 
-        let x;
-        for (let i = 0; i < 2; i++) {
         this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
         this.platforms.create();
-            x  = 1400*i;
-            this.platforms.criaObstaculos(574+x, 155, 'plat1');
-            this.platforms.criaObstaculos(344+x, 250, 'plat2');
-            this.platforms.criaObstaculos(1268+x, 155, 'plat3');
-            this.platforms.criaObstaculos(1000+x, 196, 'OBS7');
-        }
-        this.platforms.criaObstaculos(-1, 144 , 'limite');
-        this.platforms.criaObstaculos(2801, 144, 'limite');
+        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
+        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
+        this.platforms.criaObstaculos(-1, 144 , 'limite',1);
+        this.platforms.criaObstaculos(2801, 144, 'limite',1);
 
         this.player = new Player(this);
         this.coin = new Coin(this);
