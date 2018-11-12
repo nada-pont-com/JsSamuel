@@ -1,7 +1,8 @@
 import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
-import PlatForms from "./platForms.js";
+import PlatForms from "./platForms.js";<<<<<<< HEAD
+        
 class fase2 extends Phaser.Scene{
 
     constructor(){
@@ -10,6 +11,15 @@ class fase2 extends Phaser.Scene{
         this.bg;
         this.platforms;
         this.pontos = 0;
+        this.obs;
+        this.cursors;
+        this.score = 0;
+        this.gameOver = false;
+        this.scoreText;
+        this.coin;
+        this.player;
+        this.w;
+        this.h;
     }
     init(){
 
@@ -17,7 +27,7 @@ class fase2 extends Phaser.Scene{
 
     }
     preload (){
-        this.load.image('bg', 'assets/background/fase 2.png');//700x288
+        this.load.image('bgf2', 'assets/background/fase 2.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
         this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
         this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
@@ -32,26 +42,18 @@ class fase2 extends Phaser.Scene{
     create (){
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
-
-        let x;
-        for (let i = 0; i < 2; i++) {
-        this.bg = this.add.image(0, 0, 'bg').setOrigin(0,0);
-        this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
+        this.bg = this.add.image(0, 0, 'bgf2').setOrigin(0,0);
+        this.bg2 = this.add.image(1400, 0, 'bgf2').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
         this.platforms.create();
-            x  = 1400*i;
-            this.platforms.criaObstaculos(574+x, 155, 'plat1');
-            this.platforms.criaObstaculos(344+x, 250, 'plat2');
-            this.platforms.criaObstaculos(1268+x, 155, 'plat3');
-            this.platforms.criaObstaculos(1000+x, 196, 'OBS7');
-        }
-        this.platforms.criaObstaculos(-1, 144 , 'limite');
-        this.platforms.criaObstaculos(2801, 144, 'limite');
+        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
+        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
+        this.platforms.criaObstaculos(-1, 144 , 'limite',1);
+        this.platforms.criaObstaculos(2801, 144, 'limite',1);
 
         this.player = new Player(this);
         this.coin = new Coin(this);
-        this.coin.create();
         //primeira
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
@@ -174,7 +176,6 @@ class fase2 extends Phaser.Scene{
         //fim moedas
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
         this.input.on("pointerdown",function(pointer){
             console.log("x: "+this.player.player.x);
             console.log("y: "+this.player.player.y);
