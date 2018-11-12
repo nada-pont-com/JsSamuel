@@ -7,6 +7,7 @@ class Coin{
         this.txt = scene.add;
         this.txtPonto;
         pontos = scene.pontos;
+        this.create();
     }
     create(){
         this.coin = this.physics.add.staticGroup();         

@@ -6,6 +6,7 @@ class Tempo{
     constructor(scene){
         gameOver = false;
         this.add = scene.add;
+        this.geraTempo();
     }
     geraTempo(){
         this.txtTempo = this.add.text(500,16,"",{fill:"#000",fontFamily:"Arial",fontSize:"25px"});

@@ -3,8 +3,10 @@ class Player{
         this.scene = scene;
         this.anims = scene.anims;
         this.player;
+        this.vida = 3;
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.platforms = scene.platforms.platforms;
+        this.create();
     }
     create(){
         console.log("teste");

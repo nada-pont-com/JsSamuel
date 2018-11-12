@@ -2,6 +2,7 @@ import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
+import Morcego from "./morcego.js";
 class fase1 extends Phaser.Scene{
 
     constructor(){
@@ -21,7 +22,8 @@ class fase1 extends Phaser.Scene{
         this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
+        this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 19, frameHeight: 14 });// 19 x 14 tamanho do frame dp mocego 11 frames
+        // this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
@@ -35,7 +37,6 @@ class fase1 extends Phaser.Scene{
         this.bg2 = this.add.image(1400, 0, 'bg').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
-
         this.platforms.create('ground');
         this.platforms.criaObstaculos(574, 155, 'plat1',2);
         this.platforms.criaObstaculos(344, 250, 'plat2',2);
@@ -47,9 +48,7 @@ class fase1 extends Phaser.Scene{
         // console.log(this.tempo);
 
         this.player = new Player(this);
-        this.player.create();
         this.coin = new Coin(this);
-        this.coin.create();
         this.coin.geraMoedas(896.5149120000165,15);
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
@@ -74,15 +73,18 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(2200.7958079999963,25);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
         this.input.on("pointerdown",function(pointer){
             console.log("x: "+this.player.player.x);
             console.log("y: "+this.player.player.y);
         },this);
-
+        this.morcego = new Morcego(this);
+        this.morcego.createMorcego(200,45);
+        this.morcego.createMorcego(300,45);
+        this.morcego.createMorcego(400,45);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
+        console.log(this);
     }
 
     update(){
@@ -93,7 +95,7 @@ class fase1 extends Phaser.Scene{
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
-        
+        this.morcego.update(this.morcego.mocego);
     }
 }
 
