@@ -2,7 +2,7 @@ import MainMenu from './mainmenu.js';
 import MenuFases from './menufases.js';
 import fase1 from './fase1.js';
 import fase2 from './fase2.js';
-// import fase3 from './fase3.js';
+import fase3 from './fase3.js';
 // import fase4 from './fase4.js';
 // import fase5 from './fase5.js';
 // import fase6 from './fase6.js';
@@ -20,7 +20,7 @@ var config = {
             debug: false
         }
     },
-    scene: [ MainMenu, fase1 , fase2 , MenuFases]
+    scene: [ MainMenu, fase1 , fase2 , fase3 ,MenuFases]
   };
 
 var game = new Phaser.Game(config);

@@ -42,9 +42,6 @@ class fase2 extends Phaser.Scene{
     create (){
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
-
-        let x;
-        for (let i = 0; i < 2; i++) {
         this.bg = this.add.image(0, 0, 'bgf2').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bgf2').setOrigin(0,0);
 

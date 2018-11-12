@@ -2,10 +2,10 @@ import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
-class fase1 extends Phaser.Scene{
+class fase3 extends Phaser.Scene{
 
     constructor(){
-        super({key: "fase1"});
+        super({key: "fase3"});
         this.score = 0;
         this.gameOver = false;
         this.pontos = 0;
@@ -47,9 +47,7 @@ class fase1 extends Phaser.Scene{
         // console.log(this.tempo);
 
         this.player = new Player(this);
-        this.player.create();
         this.coin = new Coin(this);
-        this.coin.create();
         this.coin.geraMoedas(896.5149120000165,15);
         this.coin.geraMoedas(540.7958079999963,25);
         this.coin.geraMoedas(995.6822400000013,160);
@@ -74,11 +72,6 @@ class fase1 extends Phaser.Scene{
         this.coin.geraMoedas(2200.7958079999963,25);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
-        this.input.on("pointerdown",function(pointer){
-            console.log("x: "+this.player.player.x);
-            console.log("y: "+this.player.player.y);
-        },this);
 
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
@@ -97,4 +90,4 @@ class fase1 extends Phaser.Scene{
     }
 }
 
-export default fase1;
+export default fase3;
