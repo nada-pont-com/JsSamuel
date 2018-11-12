@@ -2,6 +2,14 @@ import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
+class fase2 extends Phaser.Scene{
+
+    constructor(){
+        super({key: "fase2"});
+        this.bat;
+        this.bg;
+        this.platforms;
+        this.pontos = 0;
         this.obs;
         this.cursors;
         this.score = 0;
@@ -11,15 +19,6 @@ import PlatForms from "./platForms.js";
         this.player;
         this.w;
         this.h;
-import Tempo from "./tempo.js";
-class fase2 extends Phaser.Scene{
-
-    constructor(){
-        super({key: "fase2"});
-        this.bat;
-        this.bg;
-        this.platforms;
-        this.pontos = 0;
     }
     init(){
 
@@ -60,9 +59,9 @@ class fase2 extends Phaser.Scene{
         this.platforms.criaObstaculos(2801, 144, 'limite');
 
         this.player = new Player(this);
-        this.player.create();
+        // this.player.create();
         this.coin = new Coin(this);
-        this.coin.create();
+        // this.coin.create();
         //primeira
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
@@ -145,7 +144,6 @@ class fase2 extends Phaser.Scene{
         //fim moedas
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.tempo.geraTempo();
         this.input.on("pointerdown",function(pointer){
             console.log("x: "+this.player.player.x);
             console.log("y: "+this.player.player.y);
@@ -157,7 +155,7 @@ class fase2 extends Phaser.Scene{
     }
 
     update(){
-        this.coin.update(this.player.player[]);
+        this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
         if (this.gameOver){
             return;
