@@ -2,16 +2,6 @@ import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
-        this.obs;
-        this.cursors;
-        this.score = 0;
-        this.gameOver = false;
-        this.scoreText;
-        this.coin;
-        this.player;
-        this.w;
-        this.h;
-import Tempo from "./tempo.js";
 class fase2 extends Phaser.Scene{
 
     constructor(){
@@ -60,7 +50,6 @@ class fase2 extends Phaser.Scene{
         this.platforms.criaObstaculos(2801, 144, 'limite');
 
         this.player = new Player(this);
-        this.player.create();
         this.coin = new Coin(this);
         this.coin.create();
         //primeira
@@ -142,6 +131,46 @@ class fase2 extends Phaser.Scene{
         //setima
         this.coin.geraMoedas(1800,250);
         this.coin.geraMoedas(1830,250);
+        //oitava
+        this.coin.geraMoedas(2100,250);
+        this.coin.geraMoedas(2130,250);
+        //nona
+        this.coin.geraMoedas(2200,250);
+        this.coin.geraMoedas(2230,250);
+        this.coin.geraMoedas(2200,215);
+        this.coin.geraMoedas(2230,215);
+        //decima
+        this.coin.geraMoedas(2300,180);
+        this.coin.geraMoedas(2330,180);
+        this.coin.geraMoedas(2300,215);
+        this.coin.geraMoedas(2330,215);
+        this.coin.geraMoedas(2300,250);
+        this.coin.geraMoedas(2330,250);
+        //decima primeira
+        this.coin.geraMoedas(2400,145);
+        this.coin.geraMoedas(2430,145);
+        this.coin.geraMoedas(2400,180);
+        this.coin.geraMoedas(2430,180);
+        this.coin.geraMoedas(2400,215);
+        this.coin.geraMoedas(2430,215);
+        this.coin.geraMoedas(2400,250);
+        this.coin.geraMoedas(2430,250);
+        //decima segunda
+        this.coin.geraMoedas(2500,180);
+        this.coin.geraMoedas(2530,180);
+        this.coin.geraMoedas(2500,215);
+        this.coin.geraMoedas(2530,215);
+        this.coin.geraMoedas(2500,250);
+        this.coin.geraMoedas(2530,250);
+        //decima terceira
+        this.coin.geraMoedas(2600,215);
+        this.coin.geraMoedas(2630,215);
+        this.coin.geraMoedas(2600,250);
+        this.coin.geraMoedas(2630,250);
+        //decima quarta
+        this.coin.geraMoedas(2700,250);
+        this.coin.geraMoedas(2730,250);
+
         //fim moedas
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
@@ -157,11 +186,13 @@ class fase2 extends Phaser.Scene{
     }
 
     update(){
-        this.coin.update(this.player.player[]);
-        this.player.update(this.coin.coins());
         if (this.gameOver){
             return;
         }
+        this.gameOver = this.tempo.update();
+        this.tempo.moveTempo(this.player.player);
+        this.coin.update(this.player.player);
+        this.player.update(this.coin.coins());
     }
 }
 
