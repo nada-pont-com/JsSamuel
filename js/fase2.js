@@ -46,7 +46,7 @@ class fase2 extends Phaser.Scene{
         this.bg2 = this.add.image(1400, 0, 'bgf2').setOrigin(0,0);
 
         this.platforms = new PlatForms(this);
-        this.platforms.create();
+        this.platforms.create("ground");
         this.platforms.criaObstaculos(1268, 155, 'plat3',2);
         this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
