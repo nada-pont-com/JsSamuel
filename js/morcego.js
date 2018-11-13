@@ -1,5 +1,5 @@
 // 19 x 14 tamanho do frame dp mocego
-let SDMob = "desce";
+let SDMob = [];
 let nunber = 0;
 let gameOver;
 class Morcego{
@@ -18,7 +18,12 @@ class Morcego{
     }
     createMorcego(x,y){
         this.mocego.create(x, y, 'morcego');
-        console.log(this.mocego);
+        if(y<15){
+            SDMob[nunber] = "desce";
+        }else{
+            SDMob[nunber] = "subi";
+        }
+        // console.log(this.mocego);
         this.createAnims(nunber);
         nunber++;
     }
@@ -43,17 +48,19 @@ class Morcego{
         for (let i = 0; i < i2.length; i++) {
             i2[i].setVelocityX(0);
             let y = i2[i].y;
-            if(SDMob=="subi"){
+            if(SDMob[i]=="subi"){
                 i2[i].setVelocityY(-100);
                 if(y < 15){
-                    SDMob="desce";
+                    console.log(y);
+                    SDMob[i]="desce";
                 }
                 // console.log(this.mocego.y);
-            }else if(SDMob=="desce"){
+            }else if(SDMob[i]=="desce"){
                 i2[i].setVelocityY(100);
                 // console.log(y);
-                if(y > 250){
-                    SDMob="subi";
+                if(y > 269){
+                    console.log(y);
+                    SDMob[i]="subi";
                 }
             }
         }
