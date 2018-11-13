@@ -27,6 +27,7 @@ class fase1 extends Phaser.Scene{
         // this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('limite2', 'assets/obj/limite2.png');//700x2 limite do topo do mapa
     }
 
     create (){
@@ -91,10 +92,14 @@ class fase1 extends Phaser.Scene{
         this.morcego.createMorcego(2520,205);
         this.morcego.createMorcego(2600,205);
         this.morcego.createMorcego(2650,205);
+        this.morcego.createMorcego(200,25,150);// Parametros: X,Y,Velocidade;
+        this.morcego.createMorcego(300,25,155);
+        this.morcego.createMorcego(400,25,120);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
+        this.physics.add.collider(this.platforms.platforms, this.morcego.mocego);
     }
 
     update(){

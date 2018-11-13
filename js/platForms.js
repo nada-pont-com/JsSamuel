@@ -3,11 +3,12 @@ class PlatForms{
         this.physics = scene.physics;
         this.platforms;
     }
-    create(){
+    create(nome){
         this.platforms = this.physics.add.staticGroup();
         let x = 180;
         for(let i = 0;i<8;i++){
-            this.platforms.create(x, 278, 'ground');
+            this.platforms.create(x, 278, nome);
+            this.platforms.create(x, 0, "limite2");
             x+=360;
         }
     }
