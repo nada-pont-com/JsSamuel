@@ -27,6 +27,7 @@ class fase1 extends Phaser.Scene{
         // this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('limite2', 'assets/obj/limite2.png');//700x2 limite do topo do mapa
     }
 
     create (){

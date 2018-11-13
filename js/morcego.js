@@ -34,6 +34,7 @@ class Morcego{
             frameRate: 10,
             repeat: -1
         });
+        this.mocego.children.entries[nunber].setBounce(1, 1);
         this.mocego.children.entries[nunber].anims.play('morcego'+nunber, true);
     }
     dano(player,mocego,scene){
