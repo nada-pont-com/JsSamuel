@@ -1,4 +1,4 @@
-// 19 x 14 tamanho do frame dp mocego
+// 17 x 12 tamanho do frame dp mocego
 let SDMob = "desce";
 let nunber = 0;
 let gameOver;

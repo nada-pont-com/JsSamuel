@@ -23,8 +23,7 @@ class fase1 extends Phaser.Scene{
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.image('tlaloc', 'assets/skins/tlaloc.png');//tlaloc
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 19, frameHeight: 14 });// 19 x 14 tamanho do frame dp mocego 11 frames
-        // this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
+        this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 17, frameHeight: 12 });// 17 x 12 tamanho do frame dp mocego 11 frames
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
@@ -78,10 +77,13 @@ class fase1 extends Phaser.Scene{
         this.morcego.createMorcego(200,205);
         this.morcego.createMorcego(300,205);
         this.morcego.createMorcego(400,205);
+        this.morcego.createMorcego(600, 205);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
+        this.physics.add.collider(this.morcego.mocego, this.platforms.platforms);
+    
     }
 
     update(){
