@@ -3,6 +3,7 @@ import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
 import Morcego from "./morcego.js";
+import Menu from './menu.js';
 class fase1 extends Phaser.Scene{
 
     constructor(){
@@ -84,6 +85,7 @@ class fase1 extends Phaser.Scene{
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
         this.physics.add.collider(this.platforms.platforms, this.morcego.mocego);
+        this.menu = new Menu(this);
     }
 
     update(){

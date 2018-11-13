@@ -18,11 +18,11 @@ class Morcego{
     }
     createMorcego(x,y,veloc){
         this.mocego.create(x, y, 'morcego');
-        if(y<15){
+        /*if(y<15){
             SDMob[nunber] = "desce";
         }else{
             SDMob[nunber] = "subi";
-        }
+        } */
         // console.log(this.mocego);
         this.createAnims(nunber,veloc);
         nunber++;
