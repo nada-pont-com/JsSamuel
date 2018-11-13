@@ -3,6 +3,7 @@ import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
 import Morcego from "./morcego.js";
+import Menu from './menu.js';
 class fase1 extends Phaser.Scene{
 
     constructor(){
@@ -26,6 +27,7 @@ class fase1 extends Phaser.Scene{
         this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 17, frameHeight: 12 });// 17 x 12 tamanho do frame dp mocego 11 frames
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('limite2', 'assets/obj/limite2.png');//700x2 limite do topo do mapa
     }
 
     create (){
@@ -74,16 +76,29 @@ class fase1 extends Phaser.Scene{
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.morcego = new Morcego(this);
-        this.morcego.createMorcego(200,205);
-        this.morcego.createMorcego(300,205);
-        this.morcego.createMorcego(400,205);
-        this.morcego.createMorcego(600, 205);
+        this.morcego.createMorcego(200,25,150);// Parametros: X,Y,Velocidade;
+        this.morcego.createMorcego(300,25,120);
+        this.morcego.createMorcego(400,25,100);
+        this.morcego.createMorcego(1000,25,50);
+        this.morcego.createMorcego(555,25,50);
+        this.morcego.createMorcego(1200,25,150);
+        this.morcego.createMorcego(1450,25,100);
+        this.morcego.createMorcego(1500,25,150);
+        this.morcego.createMorcego(1745,25,150);
+        this.morcego.createMorcego(1950,25,150);
+        this.morcego.createMorcego(2000,25,120);
+        this.morcego.createMorcego(2300,25,150);
+        this.morcego.createMorcego(2470,25,150);
+        this.morcego.createMorcego(2520,25,125);
+        this.morcego.createMorcego(2600,25,80);
+        this.morcego.createMorcego(2650,25,40);
+
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
         this.physics.add.collider(this.morcego.mocego, this.platforms.platforms);
-    
+        this.menu = new Menu(this);
     }
 
     update(){
