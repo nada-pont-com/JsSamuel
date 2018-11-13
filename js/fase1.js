@@ -76,13 +76,14 @@ class fase1 extends Phaser.Scene{
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.morcego = new Morcego(this);
-        this.morcego.createMorcego(200,205);
-        this.morcego.createMorcego(300,205);
-        this.morcego.createMorcego(400,205);
+        this.morcego.createMorcego(200,25,150);// Parametros: X,Y,Velocidade;
+        this.morcego.createMorcego(300,25,155);
+        this.morcego.createMorcego(400,25,120);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
+        this.physics.add.collider(this.platforms.platforms, this.morcego.mocego);
     }
 
     update(){

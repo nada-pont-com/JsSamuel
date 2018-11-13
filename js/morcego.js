@@ -16,7 +16,7 @@ class Morcego{
     create(){
         this.mocego = this.physics.add.group();
     }
-    createMorcego(x,y){
+    createMorcego(x,y,veloc){
         this.mocego.create(x, y, 'morcego');
         if(y<15){
             SDMob[nunber] = "desce";
@@ -24,27 +24,25 @@ class Morcego{
             SDMob[nunber] = "subi";
         }
         // console.log(this.mocego);
-        this.createAnims(nunber);
+        this.createAnims(nunber,veloc);
         nunber++;
     }
-    createAnims(nunber){
+    createAnims(nunber,veloc){
         this.anims.create({
             key: 'morcego'+nunber,
             frames: this.anims.generateFrameNumbers('morcego', { start: 0, end : 10}),
             frameRate: 10,
             repeat: -1
         });
-        this.mocego.children.entries[nunber].setBounce(1, 1);
+        this.mocego.children.entries[nunber].setVelocityY(veloc);
+        this.mocego.children.entries[nunber].setBounce(0, 1);
         this.mocego.children.entries[nunber].anims.play('morcego'+nunber, true);
     }
-    dano(player,mocego,scene){
-        console.log("ola");
-        // console.log(this.scene);
-        // scene.scene.restart();
+    dano(){
         gameOver = true;
     }
     update(mocego,gameOver2){
-        let i2 = mocego.children.entries;
+        /* let i2 = mocego.children.entries;
         // console.log(SDMob);
         for (let i = 0; i < i2.length; i++) {
             i2[i].setVelocityX(0);
@@ -65,11 +63,12 @@ class Morcego{
                 }
             }
         }
+        */
         if(gameOver2){
             return gameOver2;
         }else{
             return gameOver;
-        }
+        } 
     }
 }
 
