@@ -113,6 +113,7 @@ class fase1 extends Phaser.Scene{
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
+        this.menu.update(this.player.player);
         this.gameOver = this.morcego.update(this.morcego.mocego,this.gameOver);
     }
 }

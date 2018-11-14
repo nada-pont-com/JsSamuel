@@ -9,7 +9,7 @@ class Menu{
         this.create();
     }
     create(){
-        this.menu = this.add.image(670,35,'pausa');
+        this.menu = this.add.image(670,30,'pausa');
         this.menu.setInteractive();
         this.input.on("gameobjectdown",function(pointer,gameObject){
             this.scene.pause(this.key);
@@ -17,7 +17,10 @@ class Menu{
             this.scene.launch("menu");
         },this);
     }   
-    update(){
+    update(player){
+        if(player.x>350 && player.x<2450){
+            this.menu.x=parseInt(player.x+320);
+        }
     }
 }
 export default Menu;

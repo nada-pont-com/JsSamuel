@@ -35,7 +35,7 @@ class Cobra{
         gameOver = true;
     }
     update(cobra,gameOver2){
-        if(movcobra=="esq"){
+        /* if(movcobra=="esq"){
             this.cobra.setVelocityX(-200);
             if(x < 15){
                 movcobra="dir";
@@ -45,7 +45,7 @@ class Cobra{
             if(x > 2800){
                 movcobra="esq";
             }
-        }
+        } */
         if(gameOver2){
             return gameOver2;
         }else{
