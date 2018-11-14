@@ -4,6 +4,7 @@ let min = 0;
 
 class Tempo{
     constructor(scene){
+        this.scene = scene;
         gameOver = false;
         seg = 0;
         min = 0;
@@ -12,7 +13,7 @@ class Tempo{
     }
     geraTempo(){
         this.txtTempo = this.add.text(500,16,"",{fill:"#000",fontFamily:"Arial",fontSize:"25px"});
-        tempo = setInterval(function(){
+        tempo = this.scene.time.addEvent({ delay: 1000, callback:function(){
             if(seg == 59){
                 seg = 0;
                 min++;
@@ -21,10 +22,10 @@ class Tempo{
                 gameOver = true;
             }
             seg++;
-        },1000);
+        }, callbackScope: this, loop: true });;
     }
     paraTempo(){
-        clearInterval(tempo);
+        tempo.remove(false);
     }
     moveTempo(player){
         let min2 = min,seg2 = seg;

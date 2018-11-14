@@ -17,5 +17,7 @@ class Menu{
             this.scene.launch("menu");
         },this);
     }   
+    update(){
+    }
 }
 export default Menu;
