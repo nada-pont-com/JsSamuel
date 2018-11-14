@@ -29,9 +29,6 @@ class fase2 extends Phaser.Scene{
     preload (){
         this.load.image('bgf2', 'assets/background/fase 2.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
-        this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
-        this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
-        this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
         this.load.spritesheet('cobra', 'assets/mobs/cobra.png', {frameWidth: 36, frameHeight: 36});//32x48
@@ -47,8 +44,6 @@ class fase2 extends Phaser.Scene{
 
         this.platforms = new PlatForms(this);
         this.platforms.create("ground");
-        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
-        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
 
