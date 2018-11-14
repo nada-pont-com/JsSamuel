@@ -1,6 +1,6 @@
 class Menu{
     constructor(scene){
-
+        console.log(scene);
         this.scene = scene.scene;
         this.add = scene.add;
         this.menu;

@@ -1,5 +1,5 @@
 
-class menu extends Phaser.Scene{
+class menuFase extends Phaser.Scene{
     create(){
         let play = this.add.image("play");
         let reset = this.add.image("reset");
@@ -8,4 +8,4 @@ class menu extends Phaser.Scene{
         this.input.on("gameobjectdown")
     }
 }
-export default menu;
+export default menuFase;
