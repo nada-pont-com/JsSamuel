@@ -1,7 +1,7 @@
-
 class Menu{
     constructor(scene){
-
+        console.log(scene);
+        this.key = scene.sys.config.key;
         this.scene = scene.scene;
         this.add = scene.add;
         this.menu;
@@ -12,17 +12,10 @@ class Menu{
         this.menu = this.add.image(670,35,'pausa');
         this.menu.setInteractive();
         this.input.on("gameobjectdown",function(pointer,gameObject){
-            this.scene.start("menu");
-        })
+            this.scene.pause(this.key);
+            window.localStorage.setItem("fase",this.key);
+            this.scene.launch("menu");
+        },this);
     }   
 }
-class menu extends Phaser.Scene{
-    create(){
-        let play = this.add.image("play");
-        let reset = this.add.image("reset");
-        // let play = this.add.image("start");
-        let menu = this.add.image("menu");
-        this.input.on("gameobjectdown")
-    }
-}
-export default menu;
+export default Menu;
