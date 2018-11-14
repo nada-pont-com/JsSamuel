@@ -29,9 +29,6 @@ class fase2 extends Phaser.Scene{
     preload (){
         this.load.image('bgf2', 'assets/background/fase 2.png');//700x288
         this.load.image('ground', 'assets/obj/plataforma.png');//700x60
-        this.load.image('plat1','assets/obj/dog house.png');//faixada da loja azul
-        this.load.image('plat3','assets/obj/omega shop.png');//faixada da loja verde
-        this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
         this.load.spritesheet('cobra', 'assets/mobs/cobra.png', {frameWidth: 36, frameHeight: 36});//32x48
@@ -47,8 +44,6 @@ class fase2 extends Phaser.Scene{
 
         this.platforms = new PlatForms(this);
         this.platforms.create("ground");
-        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
-        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
 
@@ -175,6 +170,7 @@ class fase2 extends Phaser.Scene{
 
         //fim moedas
         this.cobra = new Cobra(this);
+        this.cobra.createCobra(200,253);
         this.cobra.createCobra(260,205);
         this.cobra.createCobra(460,205);
         this.cobra.createCobra(660,205);
@@ -196,13 +192,19 @@ class fase2 extends Phaser.Scene{
         this.physics.add.collider(this.cobra.cobra, this.platforms.platforms);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
+        // this.physics.add.overlap(this.player.player, this.cobra.cobra,this.cobra.dano,null,this);
+        this.physics.add.overlap(this.cobra.cobra, this.player.player,this.cobra.dano);
     }
 
     update(){
         if (this.gameOver){
+            this.tempo.paraTempo();
+            this.scene.restart();
+            this.gameOver = false;
             return;
         }
-        this.gameOver = this.tempo.update();
+        this.gameOver = this.tempo.update(this.gameOver);
+        this.gameOver = this.cobra.update(this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
