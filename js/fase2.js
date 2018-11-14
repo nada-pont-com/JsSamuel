@@ -175,7 +175,16 @@ class fase2 extends Phaser.Scene{
 
         //fim moedas
         this.cobra = new Cobra(this);
-        this.cobra.createCobra(200,205);
+        this.cobra.createCobra(260,205);
+        this.cobra.createCobra(460,205);
+        this.cobra.createCobra(660,205);
+        this.cobra.createCobra(860,205);
+        this.cobra.createCobra(1460,205);
+        this.cobra.createCobra(1660,205);
+        this.cobra.createCobra(1860,205);
+        this.cobra.createCobra(2260,205);
+        this.cobra.createCobra(2460,205);
+        this.cobra.createCobra(2660,205);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.input.on("pointerdown",function(pointer){

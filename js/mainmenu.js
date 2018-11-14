@@ -14,7 +14,9 @@ class MainMenu extends Phaser.Scene {
         this.load.image('menu', 'assets/buttons/menu.png');
         this.load.image('cancela', 'assets/buttons/cancela.png');
         this.load.image("button", "../assets/buttons/start.png");
-        this.load.image("bgmm", "../assets/background/menufases.png")
+        this.load.image("bgmm", "../assets/background/menufases.png");
+        this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
+        this.load.image('limite2', 'assets/obj/limite2.png');//limite do mapa
     }
 
     create() {
