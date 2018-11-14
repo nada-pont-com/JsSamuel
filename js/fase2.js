@@ -2,7 +2,7 @@ import Player from './player.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
-        
+import Cobra from "./cobra.js";
 class fase2 extends Phaser.Scene{
 
     constructor(){
@@ -34,7 +34,7 @@ class fase2 extends Phaser.Scene{
         this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
+        this.load.spritesheet('cobra', 'assets/mobs/cobra.png', {frameWidth: 36, frameHeight: 36});//32x48
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
@@ -174,6 +174,8 @@ class fase2 extends Phaser.Scene{
         this.coin.geraMoedas(2730,250);
 
         //fim moedas
+        this.cobra = new Cobra(this);
+        this.cobra.createCobra(200,205);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.input.on("pointerdown",function(pointer){
@@ -181,7 +183,8 @@ class fase2 extends Phaser.Scene{
             console.log("y: "+this.player.player.y);
         },this);
 
-        this.cameras.main.setBounds(0, 0, 2800, 288);
+        this.cameras.main.setBounds(0, 0, 2800, 288);        
+        this.physics.add.collider(this.cobra.cobra, this.platforms.platforms);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
     }
