@@ -108,6 +108,7 @@ class fase1 extends Phaser.Scene{
             this.gameOver = false;
             return;
         }
+        // this.gameOver = this.menu.update(this.gameOver);
         this.gameOver = this.tempo.update(this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);

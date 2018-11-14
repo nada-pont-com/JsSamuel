@@ -6,22 +6,32 @@ class menuFase extends Phaser.Scene{
         this.menu;
     }
     create(){
-        this.play = this.add.image(320,144,"play").setInteractive();
-        this.reset = this.add.image(360,144,"reset");
+        this.play = this.add.image(350,104,"play").setInteractive();
+        this.reset = this.add.image(350,144,"reset").setInteractive();
         // let play = this.add.image("start");
-        let menu = this.add.image(390,144,"menu");
+        this.menu = this.add.image(350,184,"menu").setInteractive();
         this.input.on("gameobjectdown",function(pointer,gameObject){
+            let fase = window.localStorage.getItem("fase");
             switch(gameObject){
-                case play:
-                    let fase = window.localStorage.getItem("fase");
+                case this.play:
                     this.scene.resume(fase);
+                    this.destroy();
+                break;
+                case this.reset:
+                    this.scene.start(fase);
+                    this.destroy();
+                break;
+                case this.menu:
+                    this.scene.start("MenuFases");
                     this.destroy();
                 break;
             }
         },this);
     }
     destroy(){
-
+        this.play.destroy();
+        this.reset.destroy();
+        this.menu.destroy();
     }
 }
 export default menuFase;
