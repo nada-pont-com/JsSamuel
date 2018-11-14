@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-// 17 x 12 tamanho do frame dp mocego
-let SDMob = "desce";
-=======
 // 19 x 14 tamanho do frame dp mocego
-let SDMob = [];
->>>>>>> 65c66fa9288b970ff0707cbe42fffff66f9530f7
 let nunber = 0;
 let gameOver;
 class Morcego{
