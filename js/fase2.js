@@ -47,8 +47,6 @@ class fase2 extends Phaser.Scene{
 
         this.platforms = new PlatForms(this);
         this.platforms.create("ground");
-        this.platforms.criaObstaculos(1268, 155, 'plat3',2);
-        this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
 
@@ -175,7 +173,7 @@ class fase2 extends Phaser.Scene{
 
         //fim moedas
         this.cobra = new Cobra(this);
-        this.cobra.createCobra(200,205);
+        this.cobra.createCobra(200,253);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.input.on("pointerdown",function(pointer){
