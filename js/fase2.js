@@ -175,7 +175,16 @@ class fase2 extends Phaser.Scene{
 
         //fim moedas
         this.cobra = new Cobra(this);
-        this.cobra.createCobra(200,205);
+        this.cobra.createCobra(260,205);
+        this.cobra.createCobra(460,205);
+        this.cobra.createCobra(660,205);
+        this.cobra.createCobra(860,205);
+        this.cobra.createCobra(1460,205);
+        this.cobra.createCobra(1660,205);
+        this.cobra.createCobra(1860,205);
+        this.cobra.createCobra(2260,205);
+        this.cobra.createCobra(2460,205);
+        this.cobra.createCobra(2660,205);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.input.on("pointerdown",function(pointer){
@@ -187,13 +196,19 @@ class fase2 extends Phaser.Scene{
         this.physics.add.collider(this.cobra.cobra, this.platforms.platforms);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
+        // this.physics.add.overlap(this.player.player, this.cobra.cobra,this.cobra.dano,null,this);
+        this.physics.add.overlap(this.cobra.cobra, this.player.player,this.cobra.dano);
     }
 
     update(){
         if (this.gameOver){
+            this.tempo.paraTempo();
+            this.scene.restart();
+            this.gameOver = false;
             return;
         }
-        this.gameOver = this.tempo.update();
+        this.gameOver = this.tempo.update(this.gameOver);
+        this.gameOver = this.cobra.update(this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
