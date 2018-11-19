@@ -57,10 +57,10 @@ class fase3 extends Phaser.Scene{
         
         this.boss = new boss(this);
         this.boss.createBoss(750,144);
-         this.coin.criaTexto();
+        this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.menu = new Menu(this);
-        this.cameras.main.setBounds(0, 0, 2800, 288);        
+        this.cameras.main.setBounds(0, 0, 1400, 288);        
         this.physics.add.collider(this.boss.boss, this.platforms.platforms);
         this.cameras.main.setBounds(0, 0, 1400, 288);
         this.cameras.main.startFollow(this.player.player);
@@ -79,6 +79,7 @@ class fase3 extends Phaser.Scene{
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
+        this.menu.update(this.player.player);
         
     }
 }
