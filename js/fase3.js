@@ -3,6 +3,7 @@ import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
 import boss from './boss.js';
+import Menu from './menu.js';
 class fase3 extends Phaser.Scene{
 
     constructor(){
@@ -39,7 +40,7 @@ class fase3 extends Phaser.Scene{
         this.platforms.criaObstaculos(574, 200, 'tronco',1);
         this.platforms.criaObstaculos(1074, 200, 'tronco',1);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
-        this.platforms.criaObstaculos(2801, 144, 'limite',1);
+        this.platforms.criaObstaculos(1401, 144, 'limite',1);
         
         // console.log(this.tempo);
 
@@ -65,9 +66,10 @@ class fase3 extends Phaser.Scene{
 
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-
+        this.menu = new Menu(this);
+        this.cameras.main.setBounds(0, 0, 2800, 288);        
         this.physics.add.collider(this.boss.boss, this.platforms.platforms);
-        this.cameras.main.setBounds(0, 0, 2800, 288);
+        this.cameras.main.setBounds(0, 0, 1400, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.boss.boss, this.player.player,this.boss.dano);

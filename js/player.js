@@ -1,4 +1,4 @@
-import Pontos from "./pontos";
+import Pontos from "./pontos.js";
 
 class Player{
     constructor(scene)  {
