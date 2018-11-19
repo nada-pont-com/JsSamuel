@@ -2,6 +2,8 @@ class Pontos{
     constructor(scene){
         this.scene = scene;
         this.pontos = scene.pontos;
+        this.seg = scene.tempo.seg;
+        this.min = scene.tempo.min;
         this.tempo;
     }
     salvar(){
@@ -10,7 +12,7 @@ class Pontos{
             url: "Salvar",
             data:"Pontuacao="+pontos+"",
             success:function(msg){
-                
+
             }
         })
     }
