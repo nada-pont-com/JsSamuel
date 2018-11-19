@@ -7,6 +7,7 @@ class Pontos{
         this.tempo;
     }
     salvar(){
+        
         $.ajax({
             type:"POST",
             url: "Salvar",

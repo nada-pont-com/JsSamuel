@@ -97,7 +97,7 @@ class fase1 extends Phaser.Scene{
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
-        // this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
+        this.physics.add.overlap(this.player.player, this.morcego.mocego,this.morcego.dano,null,this);
         this.physics.add.collider(this.morcego.mocego, this.platforms.platforms);
         this.menu = new Menu(this);
     }
