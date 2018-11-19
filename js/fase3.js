@@ -2,6 +2,7 @@ import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
+import boss from './boss.js';
 class fase3 extends Phaser.Scene{
 
     constructor(){
@@ -19,7 +20,7 @@ class fase3 extends Phaser.Scene{
         this.load.image('tronco','assets/obj/tronco2.png');//tronco        
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
+        this.load.spritesheet('boss', 'assets/mobs/tlaloc.png', {frameWidth: 174, frameHeight: 232});
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
@@ -59,19 +60,28 @@ class fase3 extends Phaser.Scene{
         this.coin.geraMoedas(560,180);
         this.coin.geraMoedas(590,180);
         
+        this.boss = new boss(this);
+        this.boss.createBoss(750,144);
+
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
 
+        this.physics.add.collider(this.boss.boss, this.platforms.platforms);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
+        this.physics.add.overlap(this.boss.boss, this.player.player,this.boss.dano);
     }
 
     update(){
         if (this.gameOver){
+            this.tempo.paraTempo();
+            this.scene.restart();
+            this.gameOver = false;
             return;
         }
         this.gameOver = this.tempo.update();
+        this.gameOver = this.boss.update(this.boss.boss,this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
