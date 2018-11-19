@@ -1,10 +1,10 @@
-import Player from './player.js';
+        import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
+import boss from './boss.js';
 class fase3 extends Phaser.Scene{
-
-    constructor(){
+     constructor(){
         super({key: "fase3"});
         this.score = 0;
         this.gameOver = false;
@@ -19,30 +19,25 @@ class fase3 extends Phaser.Scene{
         this.load.image('tronco','assets/obj/tronco2.png');//tronco        
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
-        this.load.spritesheet('bat', 'assets/mobs/bat.png', {frameWidth: 31, frameHeight: 36});//32x48
+        this.load.spritesheet('boss', 'assets/mobs/tlaloc.png', {frameWidth: 174, frameHeight: 232});
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
-
-    create (){
+     create (){
         
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
-
-        this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);
+         this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bgf3').setOrigin(0,0);
-
-        this.platforms = new PlatForms(this);
-
-        this.platforms.create('ground');
+         this.platforms = new PlatForms(this);
+         this.platforms.create('ground');
         this.platforms.criaObstaculos(574, 200, 'tronco',1);
         this.platforms.criaObstaculos(1074, 200, 'tronco',1);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(2801, 144, 'limite',1);
         
         // console.log(this.tempo);
-
-        this.player = new Player(this);
+         this.player = new Player(this);
         this.coin = new Coin(this);
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
@@ -59,24 +54,29 @@ class fase3 extends Phaser.Scene{
         this.coin.geraMoedas(560,180);
         this.coin.geraMoedas(590,180);
         
-        this.coin.criaTexto();
+        this.boss = new boss(this);
+        this.boss.createBoss(750,144);
+         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-
+         this.physics.add.collider(this.boss.boss, this.platforms.platforms);
         this.cameras.main.setBounds(0, 0, 2800, 288);
         this.cameras.main.startFollow(this.player.player);
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
+        this.physics.add.overlap(this.boss.boss, this.player.player,this.boss.dano);
     }
-
-    update(){
+     update(){
         if (this.gameOver){
+            this.tempo.paraTempo();
+            this.scene.restart();
+            this.gameOver = false;
             return;
         }
         this.gameOver = this.tempo.update();
+        this.gameOver = this.boss.update(this.boss.boss,this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());
         
     }
 }
-
-export default fase3;
+ export default fase3;

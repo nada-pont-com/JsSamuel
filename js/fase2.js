@@ -171,7 +171,6 @@ class fase2 extends Phaser.Scene{
 
         //fim moedas
         this.cobra = new Cobra(this);
-        this.cobra.createCobra(200,253);
         this.cobra.createCobra(260,205);
         this.cobra.createCobra(460,205);
         this.cobra.createCobra(660,205);
