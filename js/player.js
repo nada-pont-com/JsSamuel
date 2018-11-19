@@ -1,3 +1,5 @@
+import Pontos from "./pontos";
+
 class Player{
     constructor(scene)  {
         this.scene = scene;
@@ -58,6 +60,12 @@ class Player{
         }
         if (this.cursors.up.isDown && this.player.body.touching.down && coin){
             this.player.setVelocityY(-/*300*/254);
+        }
+    }
+    fimFase(scene){
+        if(this.player.x>2800){
+            this.ponto = new Pontos(scene);
+            this.scene.scene.start("MenuFases");
         }
     }
 }

@@ -6,8 +6,8 @@ class Tempo{
     constructor(scene){
         this.scene = scene;
         gameOver = false;
-        seg = 0;
-        min = 0;
+        this.seg = seg = 0;
+        this.min = min = 0;
         this.add = scene.add;
         this.geraTempo();
     }
