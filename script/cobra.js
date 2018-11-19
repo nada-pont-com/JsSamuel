@@ -1,6 +1,7 @@
 // 36 x 36 tamanho do frame da cobra
 let number = 0;
 let gameOver;
+let movcobra = [];
 class Cobra{
     constructor(scene){
         gameOver = false;

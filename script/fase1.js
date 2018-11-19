@@ -1,4 +1,4 @@
-import Player from './player.js';
+import Player from './playerJogo.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";

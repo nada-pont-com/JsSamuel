@@ -1,4 +1,4 @@
-import Player from './player.js';
+import Player from './playerJogo.js';
 import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
@@ -47,7 +47,7 @@ class fase2 extends Phaser.Scene{
         this.platforms = new PlatForms(this);
         this.platforms.create("ground");
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
-        this.platforms.criaObstaculos(2801, 144, 'limite',1);
+        this.platforms.criaObstaculos(2801, 10, 'limite',1);
 
         this.player = new Player(this);
         this.coin = new Coin(this);
@@ -200,6 +200,7 @@ class fase2 extends Phaser.Scene{
             this.gameOver = false;
             return;
         }
+        this.player.fimFase(this);
         this.gameOver = this.tempo.update(this.gameOver);
         this.gameOver = this.cobra.update(this.cobra.cobra,this.gameOver);
         this.tempo.moveTempo(this.player.player);
