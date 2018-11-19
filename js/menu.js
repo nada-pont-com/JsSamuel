@@ -1,3 +1,4 @@
+var posMax = "";
 class Menu{
     constructor(scene){
         console.log(scene);
@@ -6,6 +7,7 @@ class Menu{
         this.add = scene.add;
         this.menu;
         this.input = scene.input;
+        this.key = scene.sys.config.key;
         this.create();
     }
     create(){
@@ -18,7 +20,12 @@ class Menu{
         },this);
     }   
     update(player){
-        if(player.x>350 && player.x<2450){
+        if(this.key == "fase3"){
+            posMax = 1050;
+        }else{
+            posMax = 2450;
+        }
+        if(player.x>350 && player.x<posMax){
             this.menu.x=parseInt(player.x+320);
         }
     }
