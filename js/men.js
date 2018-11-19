@@ -28,6 +28,9 @@ class menuFase extends Phaser.Scene{
             }
         },this);
     }
+    update(){
+        
+    }
     destroy(){
         this.play.destroy();
         this.reset.destroy();

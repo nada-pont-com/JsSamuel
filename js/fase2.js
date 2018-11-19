@@ -3,6 +3,7 @@ import Coin from './coin.js';
 import Tempo from "./tempo.js";
 import PlatForms from "./platForms.js";
 import Cobra from "./cobra.js";
+import Menu from './menu.js';
 class fase2 extends Phaser.Scene{
 
     constructor(){
@@ -183,11 +184,7 @@ class fase2 extends Phaser.Scene{
         this.cobra.createCobra(2660,205);
         this.coin.criaTexto();
         this.tempo = new Tempo(this);
-        this.input.on("pointerdown",function(pointer){
-            console.log("x: "+this.player.player.x);
-            console.log("y: "+this.player.player.y);
-        },this);
-
+        this.menu = new Menu(this);
         this.cameras.main.setBounds(0, 0, 2800, 288);        
         this.physics.add.collider(this.cobra.cobra, this.platforms.platforms);
         this.cameras.main.startFollow(this.player.player);
@@ -204,7 +201,7 @@ class fase2 extends Phaser.Scene{
             return;
         }
         this.gameOver = this.tempo.update(this.gameOver);
-        this.gameOver = this.cobra.update(this.gameOver);
+        this.gameOver = this.cobra.update(this.cobra.cobra,this.gameOver);
         this.tempo.moveTempo(this.player.player);
         this.coin.update(this.player.player);
         this.player.update(this.coin.coins());

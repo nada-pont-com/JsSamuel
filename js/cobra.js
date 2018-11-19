@@ -1,5 +1,5 @@
 // 36 x 36 tamanho do frame da cobra
-let movcobra = "esq";
+let movcobra = [];
 let number = 0;
 let gameOver;
 class Cobra{
@@ -7,6 +7,7 @@ class Cobra{
         gameOver = false;
         this.scene = scene;
         this.cobra;
+        this.distancia = {x:[],x2:[]};
         number = 0;
         this.physics = scene.physics;
         this.anims = scene.anims;
@@ -15,9 +16,18 @@ class Cobra{
     create(){
         this.cobra = this.physics.add.group();
     }
-    createCobra(x,y){
+    createCobra(x,y,direcao){
         this.cobra.create(x, y, 'cobra');
-        console.log(this.cobra);
+        if(direcao=="esq"){
+            movcobra[number]  = "esq";
+            this.distancia.x[number] = x - 100
+            this.distancia.x2[number] = x;
+        }else{
+            movcobra[number]  = "dir";
+            this.distancia.x[number] = x;
+            this.distancia.x2[number] = x + 100;
+        }
+        // console.log(this.cobra);
         this.createAnims(number);
         number++;
     }
@@ -28,24 +38,30 @@ class Cobra{
             frameRate: 6,
             repeat: -1
         });
-        console.log(this.cobra.children.entries[number]);
+        // console.log(this.cobra.children.entries[number]);
+        this.cobra.children.entries[number].setBounce(2,0);
         this.cobra.children.entries[number].anims.play('cobra'+number, true);
     }
     dano(player,cobra,scene){
         gameOver = true;
     }
     update(cobra,gameOver2){
-        /* if(movcobra=="esq"){
-            this.cobra.setVelocityX(-200);
-            if(x < 15){
-                movcobra="dir";
+        let cobras = cobra.children.entries;
+        for (let i = 0; i < cobras.length; i++) {            
+            let x = cobras[i].x;
+            // console.log(x);
+            if(movcobra[i]=="esq"){
+                cobras[i].setVelocityX(-20);
+                if(x < this.distancia.x[i]){
+                    movcobra[i]="dir";
+                }
+            }else if(movcobra[i]=="dir"){
+                cobras[i].setVelocityX(20);
+                if(x > this.distancia.x2[i]){
+                    movcobra[i]="esq";
+                }
             }
-        }else if(movcobra=="dir"){
-            this.cobra.setVelocityX(200);
-            if(x > 2800){
-                movcobra="esq";
-            }
-        } */
+        }
         if(gameOver2){
             return gameOver2;
         }else{
