@@ -36,6 +36,8 @@ class Tempo{
             posMax = 2450;
         }
         let min2 = min,seg2 = seg;
+        this.seg = seg;
+        this.min = min;
         if(min<10){
             min2 = "0"+min2;
         }

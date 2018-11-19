@@ -46,7 +46,7 @@ class fase1 extends Phaser.Scene{
         this.platforms.criaObstaculos(1268, 155, 'plat3',2);
         this.platforms.criaObstaculos(1000, 196, 'OBS7',2);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
-        this.platforms.criaObstaculos(2801, 100, 'limite',1);
+        this.platforms.criaObstaculos(2801, 10, 'limite',1);
         // this.platforms.criaObstaculos(300, 160, 'tlaloc',1);        
         // console.log(this.tempo);
 
@@ -109,6 +109,7 @@ class fase1 extends Phaser.Scene{
             this.gameOver = false;
             return;
         }
+        this.player.fimFase(this);
         // this.gameOver = this.menu.update(this.gameOver);
         this.gameOver = this.tempo.update(this.gameOver);
         this.tempo.moveTempo(this.player.player);

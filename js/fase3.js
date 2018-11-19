@@ -1,12 +1,11 @@
-import Player from './player.js';
+        import Player from './player.js';
 import Coin from './coin.js';
 import PlatForms from "./platForms.js";
 import Tempo from "./tempo.js";
 import boss from './boss.js';
 import Menu from './menu.js';
 class fase3 extends Phaser.Scene{
-
-    constructor(){
+     constructor(){
         super({key: "fase3"});
         this.score = 0;
         this.gameOver = false;
@@ -25,26 +24,21 @@ class fase3 extends Phaser.Scene{
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
-
-    create (){
+     create (){
         
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
-
-        this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);
+         this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);
         this.bg2 = this.add.image(1400, 0, 'bgf3').setOrigin(0,0);
-
-        this.platforms = new PlatForms(this);
-
-        this.platforms.create('ground');
+         this.platforms = new PlatForms(this);
+         this.platforms.create('ground');
         this.platforms.criaObstaculos(574, 200, 'tronco',1);
         this.platforms.criaObstaculos(1074, 200, 'tronco',1);
         this.platforms.criaObstaculos(-1, 144 , 'limite',1);
         this.platforms.criaObstaculos(1401, 144, 'limite',1);
         
         // console.log(this.tempo);
-
-        this.player = new Player(this);
+         this.player = new Player(this);
         this.coin = new Coin(this);
         this.coin.geraMoedas(200,250);
         this.coin.geraMoedas(230,250);
@@ -63,8 +57,7 @@ class fase3 extends Phaser.Scene{
         
         this.boss = new boss(this);
         this.boss.createBoss(750,144);
-
-        this.coin.criaTexto();
+         this.coin.criaTexto();
         this.tempo = new Tempo(this);
         this.menu = new Menu(this);
         this.cameras.main.setBounds(0, 0, 2800, 288);        
@@ -74,8 +67,7 @@ class fase3 extends Phaser.Scene{
         this.physics.add.overlap(this.player.player, this.coin.coin, this.coin.coletaCoins);
         this.physics.add.overlap(this.boss.boss, this.player.player,this.boss.dano);
     }
-
-    update(){
+     update(){
         if (this.gameOver){
             this.tempo.paraTempo();
             this.scene.restart();
@@ -90,5 +82,4 @@ class fase3 extends Phaser.Scene{
         
     }
 }
-
-export default fase3;
+ export default fase3;
