@@ -24,7 +24,7 @@ class fase3 extends Phaser.Scene{
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
     }
      create (){
-        
+        this.scene.bringToTop();
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
          this.bg = this.add.image(0, 0, 'bgf3').setOrigin(0,0);

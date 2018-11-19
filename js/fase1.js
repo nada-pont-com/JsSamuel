@@ -11,6 +11,7 @@ class fase1 extends Phaser.Scene{
         this.score = 0;
         this.gameOver = false;
         this.pontos = 0;
+        
     }
     init(){
         this.roundPixels = true;
@@ -32,7 +33,7 @@ class fase1 extends Phaser.Scene{
     }
 
     create (){
-        
+        this.scene.bringToTop();
         //this.w = this.cameras.main.width;
         //this.h = this.cameras.main.height;
 

@@ -6,6 +6,7 @@ class menuFase extends Phaser.Scene{
         this.menu;
     }
     create(){
+        this.scene.bringToTop();
         this.play = this.add.image(350,104,"play").setInteractive();
         this.reset = this.add.image(350,144,"reset").setInteractive();
         // let play = this.add.image("start");
