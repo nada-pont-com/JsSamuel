@@ -1,5 +1,4 @@
 // 36 x 36 tamanho do frame da cobra
-let movcobra = "esq";
 let number = 0;
 let gameOver;
 class Cobra{
@@ -35,17 +34,6 @@ class Cobra{
         gameOver = true;
     }
     update(cobra,gameOver2){
-        /* if(movcobra=="esq"){
-            this.cobra.setVelocityX(-200);
-            if(x < 15){
-                movcobra="dir";
-            }
-        }else if(movcobra=="dir"){
-            this.cobra.setVelocityX(200);
-            if(x > 2800){
-                movcobra="esq";
-            }
-        } */
         if(gameOver2){
             return gameOver2;
         }else{

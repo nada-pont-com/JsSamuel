@@ -23,7 +23,7 @@ class fase1 extends Phaser.Scene{
         this.load.image('plat2', 'assets/obj/plat2.png');//banquinho
         this.load.image('coin', 'assets/obj/coin.png');//22x22
         this.load.image('tlaloc', 'assets/skins/tlaloc.png');//tlaloc
-        this.load.spritesheet('dude', 'assets/skins/dude.png', { frameWidth: 31, frameHeight: 36 });//32x48
+        this.load.spritesheet('dude', 'assets/skins/skin(1).png', { frameWidth: 31, frameHeight: 36 });//32x48
         this.load.spritesheet('morcego', 'assets/mobs/morcego.png', { frameWidth: 17, frameHeight: 12 });// 17 x 12 tamanho do frame dp mocego 11 frames
         this.load.image('OBS7','assets/obj/OBS7.png');//escada
         this.load.image('limite', 'assets/obj/limite.png');//limite do mapa
